@@ -13,7 +13,7 @@ There is an example xlsx file in ./xl_source/
 ## Prerequisites
 
 1. The script uses openpyxl for reading excel files.
-    You can just run the following command:
+You can just run the following command:
 
     pip install openpyxl
 
@@ -22,7 +22,9 @@ There is an example xlsx file in ./xl_source/
 3. Go to ./config/reader_config.py and edit the file:
 
     rows_to_skip = int with the number of the row where your data starts
+
     file_format = 'xlsx' or 'xls'
+
     columns_in_use = set the columns you use as keys according to value[0]
 
 ## Running
