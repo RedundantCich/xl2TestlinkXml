@@ -1,11 +1,6 @@
 import xml.etree.cElementTree as ET
 
 
-def create_main_parent(cell_value, section_name):
-    added_element = ET.Element(section_name, name = cell_value)
-    return added_element
-
-
 def create_name_sub_parent(cell_value, section_name, parent):
     added_element = ET.SubElement(parent, section_name, name = cell_value)
     return added_element

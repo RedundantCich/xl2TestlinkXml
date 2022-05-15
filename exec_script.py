@@ -28,7 +28,7 @@ def xl_to_xml_for_testlink(columns_in_use, rows_to_skip, folder_xl_file_list):
                         if main_test_suite is not None:
                             number_of_current_test_suite = \
                                 file_operations.write_tree_to_xml_file(file_name, main_test_suite, number_of_current_test_suite)
-                        main_test_suite = etree_actions.create_main_parent(cell_value, column_name)
+                        main_test_suite = ET.Element(column_name, name = cell_value)
                         continue
                     elif xml_designation == 'sub_parent' and additional_action == 'optional_test_suite_present':
                         sub_test_suite = etree_actions.create_name_sub_parent(cell_value, column_name, main_test_suite)
