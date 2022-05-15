@@ -57,7 +57,6 @@ def xl_to_xml_for_testlink(columns_in_use, rows_to_skip, folder_xl_file_list):
             file_operations.write_tree_to_xml_file(file_name, main_test_suite, number_of_current_test_suite)
 
 
-folder_xl_file_list = file_operations.list_files(cfg.file_format)
-
 if __name__ == "__main__":
+    folder_xl_file_list = file_operations.list_files(cfg.file_format)
     xl_to_xml_for_testlink(cfg.columns_in_use, cfg.rows_to_skip, folder_xl_file_list)
