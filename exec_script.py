@@ -20,9 +20,7 @@ def xl_to_xml_for_testlink(columns_in_use, rows_to_skip, folder_xl_file_list):
                 if cell_value is not None:
                     column_letter = column.column_letter
                     if column_letter in columns_in_use:
-                        column_name = columns_in_use[column_letter][0]
-                        xml_designation = columns_in_use[column_letter][1]
-                        additional_action = columns_in_use[column_letter][2]
+                        column_name, xml_designation, additional_action = columns_in_use[column_letter]
                     else:
                         continue
 
