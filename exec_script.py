@@ -59,4 +59,5 @@ def xl_to_xml_for_testlink(columns_in_use, rows_to_skip, folder_xl_file_list):
 
 folder_xl_file_list = file_operations.list_files()
 
-xl_to_xml_for_testlink(cfg.columns_in_use, cfg.rows_to_skip, folder_xl_file_list)
+if __name__ == "__main__":
+    xl_to_xml_for_testlink(cfg.columns_in_use, cfg.rows_to_skip, folder_xl_file_list)
