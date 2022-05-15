@@ -2,10 +2,9 @@ import glob
 import xml.etree.cElementTree as ET
 
 
-def list_files():
-    files_source = './xl_source/*.xlsx'
-    files_list = glob.glob(files_source)
-    return files_list
+def list_files(file_format):
+    files_source = f'./xl_source/*.{file_format}'
+    return glob.glob(files_source)
 
 
 def skip_start_rows(iter_rows, number_of_rows_to_skip_at_start):
