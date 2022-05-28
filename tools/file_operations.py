@@ -17,10 +17,10 @@ def write_tree_to_xml_file(file_path: str, main_test_suite: ET.Element, number_o
     tree = ET.ElementTree(main_test_suite)
     file_name = file_path[
         file_path.rfind('\\')+1:file_path.rfind('.xl')
-        ]
+    ]
     tree.write(
-        f'xml_results/{file_name}_{number_of_current_test_suite}.xml', \
-            xml_declaration=True,
-            encoding='utf-8')
+        f'xml_results/{file_name}_{number_of_current_test_suite}.xml',
+        xml_declaration=True,
+        encoding='utf-8')
     number_of_current_test_suite += 1
     return number_of_current_test_suite

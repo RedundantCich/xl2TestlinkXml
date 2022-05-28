@@ -4,11 +4,10 @@ from tools import file_operations
 from config import reader_config as cfg
 
 
-def xl_to_xml_for_testlink(columns_in_use: int, rows_to_skip: int, folder_xl_file_list: str) -> None:
+def xl_to_xml_for_testlink(columns_in_use: dict, rows_to_skip: int, folder_xl_file_list: str) -> None:
     for file_name in folder_xl_file_list:
         workbook = load_workbook(file_name)
-        sheet = workbook.active
-        iter_rows = sheet.iter_rows()
+        iter_rows = workbook.active.iter_rows()
         file_operations.skip_start_rows(iter_rows, rows_to_skip)
 
         main_test_suite = None
@@ -20,27 +19,33 @@ def xl_to_xml_for_testlink(columns_in_use: int, rows_to_skip: int, folder_xl_fil
                 if cell_value is not None:
                     column_letter = column.column_letter
                     if column_letter in columns_in_use:
-                        column_name, xml_designation, additional_action = columns_in_use[column_letter]
+                        column_name, xml_designation, additional_action = columns_in_use[
+                            column_letter]
                     else:
                         continue
 
                     if xml_designation == 'main_parent':
                         if main_test_suite is not None:
                             number_of_current_test_suite = \
-                                file_operations.write_tree_to_xml_file(file_name, main_test_suite, number_of_current_test_suite)
-                        main_test_suite = ET.Element(column_name, name = cell_value)
+                                file_operations.write_tree_to_xml_file(
+                                    file_name, main_test_suite, number_of_current_test_suite)
+                        main_test_suite = ET.Element(
+                            column_name, name=cell_value)
                         continue
                     elif xml_designation == 'sub_parent' and additional_action == 'optional_test_suite_present':
-                        sub_test_suite = ET.SubElement(main_test_suite, column_name, name = cell_value)
+                        sub_test_suite = ET.SubElement(
+                            main_test_suite, column_name, name=cell_value)
                         parent_of_test_case = sub_test_suite
                         continue
                     elif xml_designation == 'sub_parent' and additional_action == 'no_additional_actions':
                         if sub_test_suite is None:
                             parent_of_test_case = main_test_suite
-                        test_case = ET.SubElement(parent_of_test_case, column_name, name = cell_value)
+                        test_case = ET.SubElement(
+                            parent_of_test_case, column_name, name=cell_value)
                         continue
                     elif xml_designation == 'text_child':
-                        ET.SubElement(test_case, column_name).text = str(cell_value)
+                        ET.SubElement(test_case, column_name).text = str(
+                            cell_value)
 
                     if additional_action == 'start_steps':
                         steps = ET.SubElement(test_case, 'steps')
@@ -54,9 +59,11 @@ def xl_to_xml_for_testlink(columns_in_use: int, rows_to_skip: int, folder_xl_fil
                         case_step += 1
 
         number_of_current_test_suite = \
-            file_operations.write_tree_to_xml_file(file_name, main_test_suite, number_of_current_test_suite)
+            file_operations.write_tree_to_xml_file(
+                file_name, main_test_suite, number_of_current_test_suite)
 
 
 if __name__ == "__main__":
     folder_xl_file_list = file_operations.list_files(cfg.file_format)
-    xl_to_xml_for_testlink(cfg.columns_in_use, cfg.rows_to_skip, folder_xl_file_list)
+    xl_to_xml_for_testlink(
+        cfg.columns_in_use, cfg.rows_to_skip, folder_xl_file_list)
