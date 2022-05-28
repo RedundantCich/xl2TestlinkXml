@@ -4,7 +4,7 @@ from tools import etree_actions, file_operations
 from config import reader_config as cfg
 
 
-def xl_to_xml_for_testlink(columns_in_use, rows_to_skip, folder_xl_file_list):
+def xl_to_xml_for_testlink(columns_in_use: int, rows_to_skip: int, folder_xl_file_list: str) -> None:
     for file_name in folder_xl_file_list:
         workbook = load_workbook(file_name)
         sheet = workbook.active
