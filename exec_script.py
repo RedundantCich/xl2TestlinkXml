@@ -1,6 +1,6 @@
 import xml.etree.cElementTree as ET
 from openpyxl import load_workbook
-from tools import etree_actions, file_operations
+from tools import file_operations
 from config import reader_config as cfg
 
 
@@ -31,26 +31,26 @@ def xl_to_xml_for_testlink(columns_in_use: int, rows_to_skip: int, folder_xl_fil
                         main_test_suite = ET.Element(column_name, name = cell_value)
                         continue
                     elif xml_designation == 'sub_parent' and additional_action == 'optional_test_suite_present':
-                        sub_test_suite = etree_actions.create_name_sub_parent(cell_value, column_name, main_test_suite)
+                        sub_test_suite = ET.SubElement(main_test_suite, column_name, name = cell_value)
                         parent_of_test_case = sub_test_suite
                         continue
                     elif xml_designation == 'sub_parent' and additional_action == 'no_additional_actions':
                         if sub_test_suite is None:
                             parent_of_test_case = main_test_suite
-                        test_case = etree_actions.create_name_sub_parent(cell_value, column_name, parent_of_test_case)
+                        test_case = ET.SubElement(parent_of_test_case, column_name, name = cell_value)
                         continue
                     elif xml_designation == 'text_child':
-                        etree_actions.create_text_child(cell_value, column_name, test_case)
+                        ET.SubElement(test_case, column_name).text = str(cell_value)
 
                     if additional_action == 'start_steps':
-                        steps = etree_actions.create_simple_child(test_case, 'steps')
+                        steps = ET.SubElement(test_case, 'steps')
                         case_step = 1
                     elif additional_action == 'start_single_step':
-                        step = etree_actions.create_simple_child(steps, 'step')
-                        etree_actions.create_text_child(case_step, 'step_number', step)
-                        etree_actions.create_text_child(cell_value, column_name, step)
+                        step = ET.SubElement(steps, 'step')
+                        ET.SubElement(step, 'step_number').text = str(case_step)
+                        ET.SubElement(step, column_name).text = str(cell_value)
                     elif additional_action == 'end_single_step':
-                        etree_actions.create_text_child(cell_value, column_name, step)
+                        ET.SubElement(step, column_name).text = str(cell_value)
                         case_step += 1
 
         number_of_current_test_suite = \
