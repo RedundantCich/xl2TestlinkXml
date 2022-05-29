@@ -29,13 +29,10 @@ def xl_to_xml_for_testlink(columns_in_use: dict, rows_to_skip: int, folder_xl_fi
                             number_of_current_test_suite += 1
                         main_test_suite = ET.Element(column_name, name=cell_value)
                         parent_of_test_case = main_test_suite
-                        continue
                     elif xml_designation == 'sub_test_suite':
                         parent_of_test_case = ET.SubElement(main_test_suite, column_name, name=cell_value)
-                        continue
                     elif xml_designation == 'test_case':
                         test_case = ET.SubElement(parent_of_test_case, column_name, name=cell_value)
-                        continue
                     elif xml_designation == 'in_between':
                         ET.SubElement(test_case, column_name).text = str(cell_value)
                     elif xml_designation == 'preconditions':
