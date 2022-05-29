@@ -9,35 +9,35 @@ rows_to_skip = 2
 # as your excel files
 columns_in_use = {
     'B': {
-        'txt_name': 'testsuite',
-        'role': 'main_test_suite'
+        'column_name': 'testsuite',
+        'column_role': 'main_test_suite'
         },
     'C': {
-        'txt_name': 'testsuite',
-        'role': 'sub_test_suite'
+        'column_name': 'testsuite',
+        'column_role': 'sub_test_suite'
         },
     'D': {
-        'txt_name': 'testcase',
-        'role': 'test_case'
+        'column_name': 'testcase',
+        'column_role': 'test_case'
         },
     'E': {
-        'txt_name': 'importance',
-        'role': 'in_between'
+        'column_name': 'importance',
+        'column_role': 'in_between'
         },
     'F': {
-        'txt_name': 'summary',
-        'role': 'in_between'
+        'column_name': 'summary',
+        'column_role': 'in_between'
         },
     'G': {
-        'txt_name': 'preconditions',
-        'role': 'preconditions'
+        'column_name': 'preconditions',
+        'column_role': 'preconditions'
         },
     'H': {
-        'txt_name': 'actions',
-        'role': 'actions'
+        'column_name': 'actions',
+        'column_role': 'actions'
         },
     'I': {
-        'txt_name': 'expectedresults',
-        'role': 'expected_results'
+        'column_name': 'expectedresults',
+        'column_role': 'expected_results'
         }
 }
