@@ -1,5 +1,4 @@
 # Excel to XML for Testlink
-# xl_to_xml_for_testlink
 
 ## Description
 
