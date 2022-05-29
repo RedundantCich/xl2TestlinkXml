@@ -8,8 +8,8 @@ def list_files(file_format: str) -> List:
     return glob.glob(files_source)
 
 
-def skip_start_rows(iter_rows: int, number_of_rows_to_skip_at_start: int) -> None:
-    for _ in range(number_of_rows_to_skip_at_start):
+def skip_start_rows(iter_rows: int, number_of_rows_to_skip: int) -> None:
+    for _ in range(number_of_rows_to_skip):
         next(iter_rows)
 
 
