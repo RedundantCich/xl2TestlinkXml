@@ -11,10 +11,15 @@ There is an example xlsx file in ./xl_source/
 
 ## Prerequisites
 
-1. The script uses openpyxl for reading excel files.
+1A. The script uses openpyxl for reading excel files.
 You can just run the following command:
 
     pip install openpyxl
+
+1B. Alternatively, get pipenv:
+    pip install pipenv
+and run this command to set up your environment
+    pipenv install
 
 2. Put your excel files containing your test suites into ./xl_source/ folder.
 
