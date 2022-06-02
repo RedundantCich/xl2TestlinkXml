@@ -18,32 +18,32 @@ def xl_to_xml_for_testlink(columns_in_use: dict, rows_to_skip: int, folder_xl_fi
                 if cell_value is not None:
                     if column.column_letter in columns_in_use:
                         column_name = columns_in_use[column.column_letter]["column_name"]
-                        xml_designation = columns_in_use[column.column_letter]["column_role"]
+                        column_role = columns_in_use[column.column_letter]["column_role"]
                     else:
                         continue
 
-                    if xml_designation == 'main_test_suite':
+                    if column_role == 'main_test_suite':
                         if main_test_suite is not None:
                             file_operations.write_tree_to_xml_file(
                                 file_name, main_test_suite, number_of_current_test_suite)
                             number_of_current_test_suite += 1
                         main_test_suite = ET.Element(column_name, name=cell_value)
                         parent_of_test_case = main_test_suite
-                    elif xml_designation == 'sub_test_suite':
+                    elif column_role == 'sub_test_suite':
                         parent_of_test_case = ET.SubElement(main_test_suite, column_name, name=cell_value)
-                    elif xml_designation == 'test_case':
+                    elif column_role == 'test_case':
                         test_case = ET.SubElement(parent_of_test_case, column_name, name=cell_value)
-                    elif xml_designation == 'in_between':
+                    elif column_role == 'in_between':
                         ET.SubElement(test_case, column_name).text = str(cell_value)
-                    elif xml_designation == 'preconditions':
+                    elif column_role == 'preconditions':
                         ET.SubElement(test_case, column_name).text = str(cell_value)
                         steps = ET.SubElement(test_case, 'steps')
                         case_step = 1
-                    elif xml_designation == 'actions':
+                    elif column_role == 'actions':
                         step = ET.SubElement(steps, 'step')
                         ET.SubElement(step, 'step_number').text = str(case_step)
                         ET.SubElement(step, column_name).text = str(cell_value)
-                    elif xml_designation == 'expected_results':
+                    elif column_role == 'expected_results':
                         ET.SubElement(step, column_name).text = str(cell_value)
                         case_step += 1
 
