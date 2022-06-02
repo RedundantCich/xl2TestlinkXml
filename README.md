@@ -17,8 +17,11 @@ You can just run the following command:
     pip install openpyxl
 
 1B. Alternatively, get pipenv:
+
     pip install pipenv
+
 and run this command to set up your environment
+
     pipenv install
 
 2. Put your excel files containing your test suites into ./xl_source/ folder.
