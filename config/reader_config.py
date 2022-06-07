@@ -9,35 +9,27 @@ rows_to_skip = 3
 # as your excel files
 columns_in_use = {
     'B': {
-        'column_name': 'testsuite',
         'column_role': 'main_test_suite'
         },
     'C': {
-        'column_name': 'testsuite',
         'column_role': 'sub_test_suite'
         },
     'D': {
-        'column_name': 'testcase',
         'column_role': 'test_case'
         },
     'E': {
-        'column_name': 'importance',
-        'column_role': 'in_between'
+        'column_role': 'importance'
         },
     'F': {
-        'column_name': 'summary',
-        'column_role': 'in_between'
+        'column_role': 'summary'
         },
     'G': {
-        'column_name': 'preconditions',
         'column_role': 'preconditions'
         },
     'H': {
-        'column_name': 'actions',
         'column_role': 'actions'
         },
     'I': {
-        'column_name': 'expectedresults',
         'column_role': 'expected_results'
         }
 }
