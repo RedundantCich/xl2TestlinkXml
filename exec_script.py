@@ -7,7 +7,7 @@ from config import reader_config as cfg
 def xl_to_xml_for_testlink(columns_in_use: dict, rows_to_skip: int, folder_xl_file_list: str) -> None:
     for file_name in folder_xl_file_list:
         workbook = load_workbook(file_name)
-        iter_rows = workbook.active.iter_rows(min_row=1+rows_to_skip)
+        iter_rows = workbook.active.iter_rows(min_row=rows_to_skip)
 
         main_test_suite = None
         number_of_current_test_suite = 1
