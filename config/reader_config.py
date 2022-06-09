@@ -8,28 +8,12 @@ rows_to_skip = 3
 # columns in use -> You can change the main keys to have them the same
 # as your excel files
 columns_in_use = {
-    'B': {
-        'column_role': 'main_test_suite'
-        },
-    'C': {
-        'column_role': 'sub_test_suite'
-        },
-    'D': {
-        'column_role': 'test_case'
-        },
-    'E': {
-        'column_role': 'importance'
-        },
-    'F': {
-        'column_role': 'summary'
-        },
-    'G': {
-        'column_role': 'preconditions'
-        },
-    'H': {
-        'column_role': 'actions'
-        },
-    'I': {
-        'column_role': 'expected_results'
-        }
+    'B': 'main_test_suite',
+    'C': 'sub_test_suite',
+    'D': 'test_case',
+    'E': 'importance',
+    'F': 'summary',
+    'G': 'preconditions',
+    'H': 'actions',
+    'I': 'expected_results'
 }
