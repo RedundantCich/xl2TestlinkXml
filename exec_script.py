@@ -4,10 +4,10 @@ from tools import file_operations
 from config import reader_config as cfg
 
 
-def xl_to_xml_for_testlink(columns_in_use: dict, rows_to_skip: int, folder_xl_file_list: str) -> None:
+def xl_to_xml_for_testlink(columns_in_use: dict, row_to_start: int, folder_xl_file_list: str) -> None:
     for file_path in folder_xl_file_list:
         workbook = load_workbook(file_path)
-        iter_rows = workbook.active.iter_rows(min_row=rows_to_skip)
+        iter_rows = workbook.active.iter_rows(min_row=row_to_start)
 
         main_test_suite = None
         number_of_current_test_suite = 1
