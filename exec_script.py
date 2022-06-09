@@ -32,14 +32,11 @@ def xl_to_xml_for_testlink(columns_in_use: dict, rows_to_skip: int, folder_xl_fi
                         parent_of_test_case = ET.SubElement(main_test_suite, 'testsuite', name=cell_value)
                     elif column_role == 'test_case':
                         test_case = ET.SubElement(parent_of_test_case, 'testcase', name=cell_value)
-                    elif column_role == 'importance':
-                        ET.SubElement(test_case, 'importance').text = str(cell_value)
-                    elif column_role == 'summary':
-                        ET.SubElement(test_case, 'summary').text = str(cell_value)
-                    elif column_role == 'preconditions':
-                        ET.SubElement(test_case, 'preconditions').text = str(cell_value)
-                        steps = ET.SubElement(test_case, 'steps')
-                        case_step = 1
+                    elif column_role in ['importance', 'summary', 'preconditions']:
+                        ET.SubElement(test_case, column_role).text = str(cell_value)
+                        if column_role == 'preconditions':
+                            steps = ET.SubElement(test_case, 'steps')
+                            case_step = 1
                     elif column_role == 'actions':
                         step = ET.SubElement(steps, 'step')
                         ET.SubElement(step, 'step_number').text = str(case_step)
