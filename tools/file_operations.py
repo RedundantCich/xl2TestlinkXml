@@ -15,7 +15,7 @@ def prepare_file_name(file_path: str, number_of_current_test_suite: int) -> str:
     return f'{file_name}_{number_of_current_test_suite}'
 
 
-def write_tree_to_xml_file(main_element: ET.Element, file_name) -> None:
+def write_tree_to_xml_file(main_element: ET.Element, file_name: str) -> None:
     tree = ET.ElementTree(main_element)
     tree.write(
         f'xml_results/{file_name}.xml',
