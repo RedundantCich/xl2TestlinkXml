@@ -3,7 +3,7 @@ file_format = 'xlsx'
 
 # rows to skip -> you should include headers here
 # For example if 1 is empty and 2 is headers, you should write in 3
-rows_to_skip = 3
+row_to_start = 3
 
 # columns in use -> You can change the main keys to have them the same
 # as your excel files
