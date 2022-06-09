@@ -15,11 +15,8 @@ def xl_to_xml_for_testlink(columns_in_use: dict, rows_to_skip: int, folder_xl_fi
         for row in iter_rows:
             for column in row:
                 cell_value = column.value
-                if cell_value is not None:
-                    if column.column_letter in columns_in_use:
-                        column_role = columns_in_use[column.column_letter]["column_role"]
-                    else:
-                        continue
+                if cell_value is not None and column.column_letter in columns_in_use:
+                    column_role = columns_in_use[column.column_letter]["column_role"]
 
                     if column_role == 'main_test_suite':
                         if main_test_suite is not None:
